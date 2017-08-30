@@ -14,20 +14,9 @@ class Aurora extends LXPattern {
     final private SinLFO off3 = new SinLFO(-2*TWO_PI, 2*TWO_PI, rate3);
     final private SinLFO wth3 = new SinLFO(12, 140, 40000);
 
-    final private float hOffset;
 
-    Wave(LX lx, int i) {
-      super(lx);
-      hOffset = i*120;
-      //addModulator(rate1).start();
-      //addModulator(rate2).start();
-      //addModulator(rate3).start();
-      //addModulator(off1).start();
-      //addModulator(off2).start();
-      //addModulator(off3).start();
-      //addModulator(wth1).start();
-      //addModulator(wth2).start();
-      //addModulator(wth3).start();
+    Wave(LX lx) {
+      super(lx);      
       addModulator(rate1.randomBasis()).start();
       addModulator(rate2.randomBasis()).start();
       addModulator(rate3.randomBasis()).start();
@@ -61,7 +50,7 @@ class Aurora extends LXPattern {
   Aurora(LX lx) {
     super(lx);
     for (int i = 0; i < 1; ++i) {
-      addLayer(new Wave(lx, i));
+      addLayer(new Wave(lx));
     }
   }
 
