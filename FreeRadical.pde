@@ -31,12 +31,13 @@ void setup() {
     
     new Transporter(lx),
     new Aurora(lx),
+    new ColorSwatches(lx),
     //new IteratorTestPattern(lx),
     //new BaseHuePattern(lx),
 
   });
 
-  final LXTransition multiply = new MultiplyTransition(lx).setDuration(22*MINUTES);
+  final LXTransition multiply = new MultiplyTransition(lx).setDuration(12*MINUTES);
 
   for (LXPattern p : lx.getPatterns()) {
     p.setTransition(multiply);

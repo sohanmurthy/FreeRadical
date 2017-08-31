@@ -36,10 +36,11 @@ class Aurora extends LXPattern {
         float vy = model.ay + vy1 + vy2;
         
         float thickness = 16 + 9 * sin(off3.getValuef() + (p.x - model.cx) / wth3.getValuef());
+        float ts = thickness/1.2;
 
         addColor(p.index, LXColor.hsb(
-        0,
-        0, 
+        (lx.getBaseHuef() + (p.x / model.xRange) * 66) % 360,
+        min(40, (100/ts)*abs(p.y - vy)), 
         max(0, 100 - (100/thickness)*abs(p.y - vy))
         ));
       }
@@ -126,4 +127,66 @@ class Transporter extends LXPattern {
     
   }
     
+}
+
+
+
+class ColorSwatches extends LXPattern{
+
+  class Swatch extends LXLayer {
+
+    private final SinLFO sync = new SinLFO(8*SECONDS, 24*SECONDS, 76*SECONDS);
+    private final SinLFO bright = new SinLFO(-100,100, sync);
+    private final SinLFO sat = new SinLFO(45,75, sync);
+    private final TriangleLFO hueValue = new TriangleLFO(0, 22, sync);
+
+    private int sPixel;
+    private int fPixel;
+    private float hOffset;
+
+    Swatch(LX lx, int s, int f, float o){
+      super(lx);
+      sPixel = s;
+      fPixel = f;
+      hOffset = o;
+      addModulator(sync.randomBasis()).start();
+      addModulator(bright.randomBasis()).start();
+      addModulator(sat.randomBasis()).start();
+      addModulator(hueValue.randomBasis()).start();
+    }
+
+    public void run(double deltaMs) {
+      float s = sat.getValuef();
+      float b = constrain(bright.getValuef(), 0, 100);
+
+      for(int i = sPixel; i < fPixel; i++){
+        blendColor(i, LXColor.hsb(
+          lx.getBaseHuef() + hueValue.getValuef() + hOffset,
+          //lx.getBaseHuef() + hOffset,
+          s,
+          b
+          ), LXColor.Blend.LIGHTEST);
+        }
+    }
+
+  }
+
+  ColorSwatches(LX lx){
+   super(lx);
+   //size of each swatch in pixels
+    final int section = 5;
+   for(int s = 0; s <= model.size-section; s+=section){
+     if((s+section) % (section*2) == 0){
+     addLayer(new Swatch(lx, s, s+section, 8));
+     }else{
+       addLayer(new Swatch(lx, s, s+section, 0));
+     }  
+   }
+  }
+
+  public void run(double deltaMs) {
+    setColors(#000000);
+    lx.cycleBaseHue(3.37*MINUTES);
+  }
+
 }
