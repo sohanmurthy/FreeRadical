@@ -40,7 +40,7 @@ class Aurora extends LXPattern {
 
         addColor(p.index, LXColor.hsb(
         (lx.getBaseHuef() + (p.x / model.xRange) * 66) % 360,
-        min(40, (100/ts)*abs(p.y - vy)), 
+        min(65, (100/ts)*abs(p.y - vy)), 
         max(0, 100 - (100/thickness)*abs(p.y - vy))
         ));
       }
@@ -57,6 +57,7 @@ class Aurora extends LXPattern {
 
   public void run(double deltaMs) {
     setColors(#000000);
+    lx.cycleBaseHue(5.42*MINUTES);
   }
 }
 
@@ -92,19 +93,19 @@ class Transporter extends LXPattern {
       for (LXPoint p : model.points) {
           float dx = abs(p.x - xPos.getValuef());
           float dy = abs(p.y/wth - yPos.getValuef());
-          float b = 16 - (16/size) * max(dx, dy);
+          float b = 20 - (20/size) * max(dx, dy);
         if (b > 0) {
           touched = true;
           blendColor(p.index, LXColor.hsb(
-            0,
-            0, 
+            (lx.getBaseHuef() + (dist(p.x, p.y, model.cx, (model.yMin-(1*FEET))) / model.xRange) * 120) % 360,
+            33, 
             b), LXColor.Blend.ADD);
         }
       }
       if (!touched) {
         init();
       }
-      lx.cycleBaseHue(9.6*MINUTES);
+      lx.cycleBaseHue(8.73*MINUTES);
     }
 
     private void init() {
@@ -138,7 +139,7 @@ class ColorSwatches extends LXPattern{
     private final SinLFO sync = new SinLFO(8*SECONDS, 24*SECONDS, 76*SECONDS);
     private final SinLFO bright = new SinLFO(-100,100, sync);
     private final SinLFO sat = new SinLFO(45,75, sync);
-    private final TriangleLFO hueValue = new TriangleLFO(0, 22, sync);
+    private final TriangleLFO hueValue = new TriangleLFO(0, 26, sync);
 
     private int sPixel;
     private int fPixel;
@@ -177,7 +178,7 @@ class ColorSwatches extends LXPattern{
     final int section = 5;
    for(int s = 0; s <= model.size-section; s+=section){
      if((s+section) % (section*2) == 0){
-     addLayer(new Swatch(lx, s, s+section, 8));
+     addLayer(new Swatch(lx, s, s+section, 0));
      }else{
        addLayer(new Swatch(lx, s, s+section, 0));
      }  
