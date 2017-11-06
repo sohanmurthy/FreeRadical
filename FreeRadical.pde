@@ -29,9 +29,10 @@ void setup() {
 
   lx.setPatterns(new LXPattern[] {
     
-    new Transporter(lx),
+    new Spirals(lx),
+    new ColorSwatches(lx, 20),
     new Aurora(lx),
-    new ColorSwatches(lx),
+    new ColorSwatches(lx, 6),
     //new IteratorTestPattern(lx),
     //new BaseHuePattern(lx),
 
