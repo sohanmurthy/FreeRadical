@@ -30,23 +30,23 @@ void setup() {
   lx.setPatterns(new LXPattern[] {
     
     new Spirals(lx),
-    new ColorSwatches(lx, 20),
-    new Aurora(lx),
+    new Shadows(lx),
     new ColorSwatches(lx, 6),
+        
     //new IteratorTestPattern(lx),
     //new BaseHuePattern(lx),
 
   });
 
-  final LXTransition multiply = new MultiplyTransition(lx).setDuration(13.3*MINUTES);
+  final LXTransition multiply = new MultiplyTransition(lx).setDuration(5.51*MINUTES);
 
   for (LXPattern p : lx.getPatterns()) {
     p.setTransition(multiply);
   }
 
-  lx.enableAutoTransition(1*SECONDS);
+  lx.enableAutoTransition(5*MINUTES);
 
-  output = buildOutput();
+  //output = buildOutput();
 
   // Adds UI elements -- COMMENT all of this out if running on Linux in a headless environment
   size(640, 480, P3D);
