@@ -1,8 +1,5 @@
-
 /******************
-
 Color Swatches
-
 *******************/
 
 class ColorSwatches extends LXPattern{
@@ -68,9 +65,7 @@ class ColorSwatches extends LXPattern{
 
 
 /******************
-
 Spirals
-
 *******************/
 
 class Spirals extends LXPattern {
@@ -138,9 +133,7 @@ class Spirals extends LXPattern {
 }
 
 /******************
-
 Shadows
-
 *******************/
 
 
