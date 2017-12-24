@@ -38,13 +38,13 @@ void setup() {
 
   });
 
-  final LXTransition multiply = new MultiplyTransition(lx).setDuration(5.51*MINUTES);
+  final LXTransition multiply = new MultiplyTransition(lx).setDuration(11.22*MINUTES);
 
   for (LXPattern p : lx.getPatterns()) {
     p.setTransition(multiply);
   }
 
-  lx.enableAutoTransition(5*MINUTES);
+  lx.enableAutoTransition(3*MINUTES);
 
   //output = buildOutput();
 
