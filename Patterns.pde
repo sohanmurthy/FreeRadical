@@ -6,9 +6,9 @@ class ColorSwatches extends LXPattern{
 
   class Swatch extends LXLayer {
 
-    private final SinLFO sync = new SinLFO(6*SECONDS, 10*SECONDS, 39*SECONDS);
+    private final SinLFO sync = new SinLFO(8*SECONDS, 14*SECONDS, 39*SECONDS);
     private final SinLFO bright = new SinLFO(-80,100, sync);
-    private final SinLFO sat = new SinLFO(45,75, sync);
+    private final SinLFO sat = new SinLFO(35,55, sync);
     private final TriangleLFO hueValue = new TriangleLFO(0, 26, sync);
 
     private int sPixel;
@@ -106,7 +106,7 @@ class Spirals extends LXPattern {
         float vy2 = model.yRange/4 * sin(off2.getValuef() + (p.x - model.cx) / wth2.getValuef());
         float vy = model.ay + vy1 + vy2;
         
-        float thickness = 3 + 1.5 * sin(off3.getValuef() + (p.x - model.cx) / wth3.getValuef());
+        float thickness = 4 + 2 * sin(off3.getValuef() + (p.x - model.cx) / wth3.getValuef());
         float ts = thickness/1.2;
 
         blendColor(p.index, LXColor.hsb(
@@ -141,8 +141,8 @@ class Shadows extends LXPattern {
   
   final float size = 10;
   final float vLow = 5;
-  final float vHigh = 14;
-  final int bright = 22;
+  final float vHigh = 9;
+  final int bright = 33;
   final int num = 12;
   
   
@@ -166,7 +166,7 @@ class Shadows extends LXPattern {
         if (b > 0) {
           touched = true;
           blendColor(p.index, LXColor.hsb(
-            (lx.getBaseHuef() + (p.y / model.yRange) * 90) % 360,
+            (lx.getBaseHuef() + (p.y / model.yRange) * 67) % 360,
             min(65, (100/s)*abs(p.y - yPos.getValuef())), 
             b), LXColor.Blend.ADD);
         }
@@ -204,7 +204,7 @@ class Shadows extends LXPattern {
         if (b > 0) {
           touched = true;
           blendColor(p.index, LXColor.hsb(
-            (lx.getBaseHuef() + (p.y / model.yRange) * 90) % 360,
+            (lx.getBaseHuef() + (p.y / model.yRange) * 67) % 360,
             min(65, (100/s)*abs(p.y - yPos.getValuef())), 
             b), LXColor.Blend.ADD);
         }
@@ -218,7 +218,7 @@ class Shadows extends LXPattern {
     private void init() {
       xPos.setValue(random(model.cx+9, model.cx+10));
       yPos.setValue(random(model.yMin-5, model.yMax+5));  
-      xPos.setVelocity(random(-vLow,- vHigh));
+      xPos.setVelocity(random(-vHigh, -vLow));
       
     }
   }
