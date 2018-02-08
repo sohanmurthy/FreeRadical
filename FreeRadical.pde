@@ -28,11 +28,10 @@ void setup() {
   lx = new P3LX(this, model);
 
   lx.setPatterns(new LXPattern[] {
-    
+
     new Spirals(lx),
     new Shadows(lx),
     new ColorSwatches(lx, 20),
-        
     //new IteratorTestPattern(lx),
     //new BaseHuePattern(lx),
 
