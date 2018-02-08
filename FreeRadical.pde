@@ -31,8 +31,7 @@ void setup() {
 
     new Spirals(lx),
     new Shadows(lx),
-    new ColorSwatches(lx, 6),
-
+    new ColorSwatches(lx, 20),
     //new IteratorTestPattern(lx),
     //new BaseHuePattern(lx),
 
@@ -44,20 +43,20 @@ void setup() {
     p.setTransition(multiply);
   }
 
-  lx.enableAutoTransition(3*MINUTES);
+  lx.enableAutoTransition(9*MINUTES);
 
-  //output = buildOutput();
+  output = buildOutput();
 
   // Adds UI elements -- COMMENT all of this out if running on Linux in a headless environment
-  size(640, 480, P3D);
-  lx.ui.addLayer(
-    new UI3dContext(lx.ui)
-    .setCenter(model.cx, model.cy, model.cz)
-    .setRadius(6*FEET)
-    .setTheta(PI/6)
-    .setPhi(PI/64)
-    .addComponent(pointCloud = new UIPointCloud(lx, model).setPointSize(4))
-  );
+  //size(640, 480, P3D);
+  //lx.ui.addLayer(
+  //  new UI3dContext(lx.ui)
+  //  .setCenter(model.cx, model.cy, model.cz)
+  //  .setRadius(6*FEET)
+  //  .setTheta(PI/6)
+  //  .setPhi(PI/64)
+  //  .addComponent(pointCloud = new UIPointCloud(lx, model).setPointSize(4))
+  //);
 
 }
 
