@@ -4,9 +4,10 @@ FREE RADICAL
 Sohan Murthy
 2017
 
-FREE RADICAL is a work-in-progress LED art installation.
-This program controls xxx individually addressable LEDs
-through a variety of procedurally generated patterns.
+FREE RADICAL is an LED art installation located in a
+private residence in South Carolina. This program
+controls 480 individually addressable LEDs, and mimics
+light filtering through a dense forest.
 
 *********************************************************/
 
@@ -47,16 +48,16 @@ void setup() {
 
   output = buildOutput();
 
-  // Adds UI elements -- COMMENT all of this out if running on Linux in a headless environment
-  //size(640, 480, P3D);
-  //lx.ui.addLayer(
-  //  new UI3dContext(lx.ui)
-  //  .setCenter(model.cx, model.cy, model.cz)
-  //  .setRadius(6*FEET)
-  //  .setTheta(PI/6)
-  //  .setPhi(PI/64)
-  //  .addComponent(pointCloud = new UIPointCloud(lx, model).setPointSize(4))
-  //);
+  // Adds UI elements -- REMOVE if running on Linux in a headless environment
+  size(640, 480, P3D);
+  lx.ui.addLayer(
+   new UI3dContext(lx.ui)
+   .setCenter(model.cx, model.cy, model.cz)
+   .setRadius(6*FEET)
+   .setTheta(PI/6)
+   .setPhi(PI/64)
+   .addComponent(pointCloud = new UIPointCloud(lx, model).setPointSize(4))
+  );
 
 }
 
