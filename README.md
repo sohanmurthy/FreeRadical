@@ -8,7 +8,9 @@ FREE RADICAL
 
 FREE RADICAL is an LED art installation located in a private residence in South Carolina. This program controls 480 individually addressable LEDs, and mimics light filtering through a dense forest.
 
-The system consists of a Raspberry Pi 3, [FadeCandy controller](https://www.adafruit.com/product/1689), and WS2812 LEDs.
+[Video](https://www.youtube.com/watch?v=_mcJep6ECrY)
+
+The system consists of a Raspberry Pi 3, [FadeCandy controller](https://www.adafruit.com/product/1689), [RGB-123 FadeCandy breakout](http://rgb-123.com/product/fadecandy-breakout/), and 480 WS2812 LEDs.
 
 ### Installation:
 
